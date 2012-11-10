@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Cadastro de Usuário</ui:define>
+	<ui:define name="principal">
+	<h:form>
+		 <p:panelGrid columns="2">
+		 	<f:facet name="header">
+		 		Cadastro de Usuário
+		 	</f:facet>	 	
+		 	<h:outputText value="Login:"/> <h:inputText value="#{usuarioBean.usuario.login}" />
+		 	<h:outputText value="Senha:"/> <h:inputSecret value="#{usuarioBean.usuario.senha}" id="senha"/>
+		 	<h:outputText value="Redigitar Senha:"/> 
+		 	<h:panelGroup>
+		 		<h:inputSecret value="#{usuarioBean.senhaRedigitada}" id="senhaRedigitada">
+		 			<f:ajax execute="senhaRedigitada senha" listener="#{usuarioBean.checarSenhas()}" render="textoSenhas"/>
+		 		</h:inputSecret>		 	
+		 		<h:outputText value="#{usuarioBean.textoSenhas}" style="#{usuarioBean.styleMensagemSenha}" id="textoSenhas"/>
+		 	</h:panelGroup>
+		 	<h:outputText value="email:"/> 
+		 		<h:panelGroup>
+			 		<h:inputText value="#{usuarioBean.usuario.email}" id="email">
+			 			<f:validator validatorId="ValidadorEmail"/>
+			 			<f:ajax execute="email" render="mEmail"/>
+				 	</h:inputText><p:message for="email" id="mEmail"/>
+			 	</h:panelGroup>
+		 	<h:outputText value="CPF:"/> <h:inputText value="#{usuarioBean.usuario.cpf}" />
+		 	<p:commandButton value="#{msg['usuario.btCadastro.nome']}" action="#{usuarioBean.cadastrar()}" />
+ 		</p:panelGrid>
+		<p:messages/>
+		<h:messages />
+ 	</h:form>
+	</ui:define>
+</ui:composition>

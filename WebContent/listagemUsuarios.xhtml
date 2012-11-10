@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+	<ui:define name="titulo">Usuários</ui:define>
+	<ui:define name="principal">
+	<h:form>
+		<p:dataTable value="#{usuarioBean.usuarios}" var="usuario">
+			<p:column headerText="Login">
+				<h:outputText value="#{usuario.login}"/>
+			</p:column>
+
+			<p:column headerText="email">
+				<h:outputText value="#{usuario.email}"/>
+			</p:column>
+			
+			<p:column headerText="CPF">
+				<h:outputText value="#{usuario.cpf}"/>
+			</p:column>
+			
+			<p:column><h:commandLink action="#{usuarioBean.remover(usuario)}">X</h:commandLink></p:column>
+			<p:column><h:commandLink action="#{usuarioBean.editar(usuario)}">E</h:commandLink></p:column>
+		</p:dataTable>
+	</h:form>
+		<p:messages />
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Edição de Usuário</ui:define>
+	<ui:define name="principal">
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				Edição de Usuário
+			</f:facet>
+			 <h:form>
+			 		<h:outputText value="Login:"/> <h:inputText value="#{usuarioBean.usuario.login}" />
+			 		<h:outputText value="CPF:"/> <h:inputText value="#{usuarioBean.usuario.cpf}" />
+			 		<p:commandButton value="#{msg['usuario.btEditar.nome']}" actionListener="#{usuarioBean.atualizar}" />
+			 </h:form>
+		 </p:panelGrid>
+	 	<p:messages/>
+	</ui:define>
+	
+</ui:composition>
+
+

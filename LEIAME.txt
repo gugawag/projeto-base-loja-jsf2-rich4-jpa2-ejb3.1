@@ -1,0 +1,13 @@
+== Informaçõ›es Importantes ==
+- Projeto montado no Eclipse Indigo (Mac) com JBoss Tools. Para montar ambiente similar, veja: http://gugawag.wordpress.com/2011/07/24/configurando-jboss-tools-jee-6-no-eclipse-indigo-e-jboss-7/ 
+- Provavelmente seu projeto está com uma exclamação. Isso se deve à configuração das bibliotecas da JVM e do JBoss. Clique com botão direito no projeto ->
+Properties -> Java Build Path -> Aba Libraries. Remova a jre e o jboss e clique em Add Library... para acrescentar as bibliotecas corretas do seu Eclipse;
+- Para usar o console do banco de dados H2, execute o jar (duplo clique ou via java -jar) que está em {jboss}/modules/com/h2database/h2/main.
+  Abrirá seu browser padrão. No JDBC URL coloque o nome JNDI configurado no datasource do arquivo standalone.xml (ex.: jdbc:h2:~/biblioteca-ds) e 
+  clique em Connect. 
+- Tecnologias utilizadas (JEE 6): JSF 2; Richfaces 4; EJB 3.1; JPA 2; Banco de dados H2 (embutido no JBoss 7);
+- Onde houver no c—ódigo o padr‹ão AFAZER: Ž para alteraçõ›es necessá‡rias para que o projeto funcione corretamente (procure já por este padrão para configurar o projeto);
+- Onde houver no c—ódigo coment‡ário com o padrã‹o AVISO: serve para indicar o uso de alguma tecnologia/recurso;
+- A arquitetura est‡á dividida em: Visã‹o (JSF-BackingBean) -> Service -> Repositó—rio;
+- Leia o arquivo template.xhtml para entender as ‡áreas existentes para toda p‡ágina que herdar dele. Altere como queira;
+- Para alterar o menu, altere o template.xhtml;

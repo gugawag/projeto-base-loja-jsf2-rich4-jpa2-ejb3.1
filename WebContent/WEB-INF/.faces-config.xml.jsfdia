@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#cadastroUsuario.xhtml"
+  PATH="/cadastroUsuario.xhtml" SHAPE="49,78,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cadastroUsuario.xhtml:0" NAME="item"
+   PATH="/cadastroUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ok::#listagemUsuarios.xhtml" NAME="output"
+    PATH="/listagemUsuarios.xhtml"
+    TARGET="rules:#listagemUsuarios.xhtml" TITLE="ok" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listagemUsuarios.xhtml"
+  PATH="/listagemUsuarios.xhtml" SHAPE="159,150,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>
