@@ -2,15 +2,15 @@ package com.gugawag.projeto.modelo;
 
 import java.io.Serializable;
 
-public class ItemCarrinho implements Serializable{
+public class Item implements Serializable{
 	private int quantidade;
 	private Produto produto;
 	
-	public ItemCarrinho(){
+	public Item(){
 		produto = new Produto();
 	}
 	
-	public ItemCarrinho(Produto produto) {
+	public Item(Produto produto) {
 		super();
 		quantidade = 1;
 		this.produto = produto;

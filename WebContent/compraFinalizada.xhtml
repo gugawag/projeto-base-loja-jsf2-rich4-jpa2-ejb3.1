@@ -7,18 +7,13 @@
 <f:view locale="#{facesContext.externalContext.requestLocale}">      
 
 <h:head>
-	<title><ui:insert name="titulo">Título da Página</ui:insert></title>
+	<title><ui:insert name="titulo">Compra Finalizada</ui:insert></title>
 </h:head>
 
 <h:body bgcolor="#ffffff">
-		<ui:insert name="menu">
-			<ui:include src="menu.xhtml"/>
-		</ui:insert>
-		<br/><br/><br/><br/>
-		<div align="center">
-			<ui:insert name="principal">Sistema XYZ</ui:insert>
-		</div>
-		<p:messages globalOnly="true" autoUpdate="true"/>
+		<p:panel>
+			<h:outputText value="Compra Finalizada com Sucesso!" />
+		</p:panel>
 </h:body>
 </f:view>		
 </html>

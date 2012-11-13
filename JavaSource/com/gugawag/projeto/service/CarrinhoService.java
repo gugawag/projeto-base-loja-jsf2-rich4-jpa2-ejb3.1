@@ -1,29 +1,43 @@
 package com.gugawag.projeto.service;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
 import com.gugawag.projeto.modelo.Carrinho;
-import com.gugawag.projeto.modelo.ItemCarrinho;
+import com.gugawag.projeto.modelo.Item;
 import com.gugawag.projeto.modelo.Produto;
-import com.gugawag.projeto.repositorio.CarrinhoRepositorio;
+import com.gugawag.projeto.repositorio.PedidoRepositorio;
 
-@Stateless
+@Stateful
 public class CarrinhoService {
 
 	private Carrinho carrinho;
+	
 	@EJB
-	private CarrinhoRepositorio carrinhoRepositorio;
+	private PedidoRepositorio pedidoRepositorio;
 		
 	public CarrinhoService(){
 		carrinho = new Carrinho();
 	}
 
 	public void salvarCarrinho(){
-		carrinhoRepositorio.cadastrarCarrinho(carrinho);
+		pedidoRepositorio.salvarPedido(carrinho);
 	}
 	
 	public void inserirProduto(Produto produto) {
-		carrinho.insereItem(new ItemCarrinho(produto));		
+		carrinho.insereItem(new Item(produto));		
 	}
+
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public void removerProduto(Produto produtoARemover) {
+		carrinho.removerProduto(produtoARemover);
+	}
+	
 }

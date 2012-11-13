@@ -4,43 +4,25 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-
-@Entity
 public class Carrinho implements Serializable{
 	
-	@Id @GeneratedValue
-	private Integer codigo;
-	
-	@Transient
-	private List<ItemCarrinho> itens;
+	private List<Item> itens;
 	
 	public Carrinho() {
-		itens = new ArrayList<ItemCarrinho>();
+		itens = new ArrayList<Item>();
 	}
 
-	public List<ItemCarrinho> getItens() {
+	public List<Item> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<ItemCarrinho> itens) {
+	public void setItens(List<Item> itens) {
 		this.itens = itens;
 	}
-	
-	public Integer getCodigo() {
-		return codigo;
-	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public void insereItem(ItemCarrinho item){
+	public void insereItem(Item item){
 		boolean achou = false;
-		for (ItemCarrinho it: itens){
+		for (Item it: itens){
 			if (it.getProduto().getCodigo()==item.getProduto().getCodigo()){
 				it.setQuantidade(it.getQuantidade()+1);
 				achou = true;
@@ -54,10 +36,19 @@ public class Carrinho implements Serializable{
 	
 	public double getValorTotal(){
 		double soma=0;
-		for(ItemCarrinho item: itens){
+		for(Item item: itens){
 			soma+=item.getValorTotal();
 		}
 		return soma;
+	}
+
+	public void removerProduto(Produto produto) {
+		for (Item item: this.getItens()){
+			if (item.getProduto().getCodigo() == produto.getCodigo()){
+				this.getItens().remove(item);
+				break;
+			}
+		}
 	}
 	
 

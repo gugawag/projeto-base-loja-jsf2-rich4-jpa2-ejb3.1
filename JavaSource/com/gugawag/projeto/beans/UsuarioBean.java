@@ -12,7 +12,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
 
 import com.gugawag.projeto.modelo.Usuario;
-import com.gugawag.projeto.repositorio.CarrinhoRepositorio;
+import com.gugawag.projeto.repositorio.PedidoRepositorio;
 import com.gugawag.projeto.repositorio.UsuarioRepositorio;
 import com.gugawag.projeto.service.UsuarioService;
 import com.gugawag.projeto.service.UsuarioJahCadatradoException;

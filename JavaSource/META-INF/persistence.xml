@@ -5,7 +5,7 @@
 		http://gugawag.wordpress.com/2011/10/20/configurando-bd-h2-no-jboss-7/. Perceba que o jndi name do jta-data-source abaixo
 		precisa ter sido configurado no arquivo standalone.xml, como descrito na url acima, casando o mesmo nome. -->
 		
-		<jta-data-source>java:jboss/datasources/Loja-DS</jta-data-source>
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 		
 		 <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
