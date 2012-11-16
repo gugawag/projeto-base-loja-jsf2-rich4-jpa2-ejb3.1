@@ -13,11 +13,11 @@
 			</f:facet>
 			 <h:form>
 			 		<h:outputText value="Login:"/> <h:inputText value="#{usuarioBean.usuario.login}" />
-			 		<h:outputText value="Senha:"/> <h:inputText value="#{usuarioBean.usuario.senha}" />
-			 		<p:commandButton value="#{msg['usuario.btLogar.nome']}" actionListener="#{usuarioBean.logar}" />
+			 		<h:outputText value="Senha:"/> <h:inputSecret value="#{usuarioBean.usuario.senha}" />
+			 		<p:commandButton value="#{msg['usuario.btLogar.nome']}" action="#{usuarioBean.logar}" />
 			 </h:form>
 		 </p:panelGrid>
-	 	<p:messages/>
+	 	<p:messages autoUpdate="true"/>
 	</ui:define>
 	
 </ui:composition>

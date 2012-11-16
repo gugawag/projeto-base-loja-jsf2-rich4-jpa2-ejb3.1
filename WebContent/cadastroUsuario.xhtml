@@ -13,10 +13,10 @@
 		 		Cadastro de Usuário
 		 	</f:facet>	 	
 		 	<h:outputText value="Login:"/> <h:inputText value="#{usuarioBean.usuario.login}" />
-		 	<h:outputText value="Senha:"/> <h:inputSecret value="#{usuarioBean.usuario.senha}" id="senha"/>
+		 	<h:outputText value="Senha:"/> <h:inputSecret value="#{usuarioBean.usuario.senha}" id="senha" required="true"/>
 		 	<h:outputText value="Redigitar Senha:"/> 
 		 	<h:panelGroup>
-		 		<h:inputSecret value="#{usuarioBean.senhaRedigitada}" id="senhaRedigitada">
+		 		<h:inputSecret value="#{usuarioBean.senhaRedigitada}" id="senhaRedigitada" required="true">
 		 			<f:ajax execute="senhaRedigitada senha" listener="#{usuarioBean.checarSenhas()}" render="textoSenhas"/>
 		 		</h:inputSecret>		 	
 		 		<h:outputText value="#{usuarioBean.textoSenhas}" style="#{usuarioBean.styleMensagemSenha}" id="textoSenhas"/>

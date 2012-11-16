@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.gugawag.projeto.modelo.Usuario;
-import com.gugawag.projeto.modelo.UsuarioVO;
 
 @Stateless
 public class UsuarioRepositorio implements Serializable{
@@ -20,20 +19,12 @@ public class UsuarioRepositorio implements Serializable{
 	
 	public void cadastrarUsuario(Usuario usuario){
 		em.persist(usuario);
-		
-		//Mostrando abaixo que com sessão do hibernate aberta (entityManager de JPA), ao alterar um objeto gerenciado
-		//será alterado automaticamente no banco de dados (update, delete etc)
-//		usuario.setLogin(usuario.getLogin() + " - alterado");
 	}
 	
 	public List<Usuario> getUsuarios(){
 		return em.createQuery("from Usuario").getResultList();
 	}
-	
-	public List<UsuarioVO> getUsuariosVO(){
-		return em.createQuery("select new UsuarioVO(u.nome) from Usuario u where u.codigo=:codigo").setParameter("codigo", 3).getResultList();
-	}
-	
+
 	public Usuario getUsuarioPorLogin(String login){
 		List<Usuario> usuarios = em.createQuery("from Usuario u where u.login=:login").setParameter("login", login).getResultList();
 		if (usuarios != null && usuarios.size()>0){

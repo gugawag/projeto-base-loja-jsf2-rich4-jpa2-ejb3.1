@@ -21,13 +21,16 @@ import com.gugawag.projeto.service.UsuarioJahCadatradoException;
 @SessionScoped
 public class UsuarioBean implements Serializable{
 	
-	private Usuario usuario;
+	private Usuario usuario, usuarioLogado;
 	private String senhaRedigitada;
 	private String textoSenhas;
 	private String styleMensagemSenha; 
 	
 	@EJB
 	private UsuarioService usuarioService;
+	
+	@EJB
+	private UsuarioRepositorio usuarioRep;
 
 	public UsuarioBean(){
 		usuario = new Usuario();
@@ -42,6 +45,14 @@ public class UsuarioBean implements Serializable{
 		this.usuario = usuario;
 	}
 	
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+
 	public List<Usuario> getUsuarios(){
 		return usuarioService.getUsuarios();
 	}
@@ -95,6 +106,8 @@ public class UsuarioBean implements Serializable{
 		FacesMessage message = new FacesMessage("Usuário cadastrado com sucesso!");
 		message.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage(null, message);
+		//fazendo esse usuário apontar para um novo
+		usuario = new Usuario();
 		return null;
 	}
 	
@@ -115,13 +128,15 @@ public class UsuarioBean implements Serializable{
 	
 	public String logar(){
 		Usuario usuarioPesquisado = usuarioService.getUsuarioPorLogin(usuario.getLogin());
+		System.out.println("USUARIO: " + usuarioPesquisado);
 		if (usuarioPesquisado == null || !usuario.getSenha().equals(usuarioPesquisado.getSenha())){
 			FacesMessage message = new FacesMessage("Usuário inexistente e/ou senha inválida!");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return null;
 		}
-		return "listagemProdutos";
+		this.usuarioLogado = usuarioPesquisado;
+		return "listagemProdutosParaUsuarios";
 	}
 
 

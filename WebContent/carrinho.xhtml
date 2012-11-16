@@ -8,6 +8,7 @@
 	<ui:define name="titulo">Usuários</ui:define>
 	<ui:define name="principal">
 	<h:form>
+		<h:outputText value="Carrinho"/>
 		<p:dataTable value="#{carrinhoBean.carrinho.itens}" var="item">
 			<p:column headerText="Descricao">
 				<h:outputText value="#{item.produto.descricao}"/>
@@ -16,15 +17,27 @@
 			<p:column headerText="Valor">
 				<h:outputText value="#{item.produto.valor}"/>
 			</p:column>
+
+			<p:column headerText="Quantidade">
+				<h:outputText value="#{item.quantidade}"/>
+			</p:column>
+			
+			<p:column headerText="Valor Total">
+				<h:outputText value="#{item.valorTotal}"/>
+			</p:column>
 			
 			<p:column headerText="excluir">
 				<h:commandLink value="x" action = "#{carrinhoBean.removerItem(item)}"/> 
 			</p:column>
+			<f:facet name="footer">
+			<p:column headerText="Total Carrinho">
+				<h:outputText value="#{carrinhoBean.carrinho.valorTotal}"/>
+			</p:column>				
+			</f:facet>
 		</p:dataTable>
-		<p:commandLink action="#{carrinhoBean.fecharCompra()}">Fechar compra</p:commandLink>
+		<p:commandLink action="#{carrinhoBean.fecharCompra()}" value="Fechar Compra"/>
 	</h:form>
-	
-		<p:messages />
+		<p:messages autoUpdate="true"/>
 	</ui:define>
 
 </ui:composition>

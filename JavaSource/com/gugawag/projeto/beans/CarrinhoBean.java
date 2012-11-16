@@ -3,6 +3,7 @@ package com.gugawag.projeto.beans;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -18,7 +19,13 @@ public class CarrinhoBean {
 	@EJB
 	private CarrinhoService carrinhoService;
 	
+	@ManagedProperty("#{usuarioBean}")
+	private UsuarioBean usuarioBean;
+	
 	public String comprar(Produto produto){
+		if (carrinhoService.getDonoCarrinho() == null){
+			carrinhoService.setDonoCarrinho(usuarioBean.getUsuarioLogado());	
+		}
 		carrinhoService.inserirProduto(produto);
 		return "carrinho";
 	}
@@ -37,7 +44,16 @@ public class CarrinhoBean {
 	
 	public String fecharCompra(){
 		carrinhoService.salvarCarrinho();
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "compraFinalizada";
+	}
+
+	public UsuarioBean getUsuarioBean() {
+		return usuarioBean;
+	}
+
+	public void setUsuarioBean(UsuarioBean usuarioBean) {
+		this.usuarioBean = usuarioBean;
 	}
 
 }

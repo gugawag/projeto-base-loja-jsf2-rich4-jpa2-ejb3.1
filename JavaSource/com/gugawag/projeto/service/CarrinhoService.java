@@ -6,12 +6,14 @@ import javax.ejb.Stateful;
 import com.gugawag.projeto.modelo.Carrinho;
 import com.gugawag.projeto.modelo.Item;
 import com.gugawag.projeto.modelo.Produto;
+import com.gugawag.projeto.modelo.Usuario;
 import com.gugawag.projeto.repositorio.PedidoRepositorio;
 
 @Stateful
 public class CarrinhoService {
 
 	private Carrinho carrinho;
+	private Usuario donoCarrinho;
 	
 	@EJB
 	private PedidoRepositorio pedidoRepositorio;
@@ -21,7 +23,7 @@ public class CarrinhoService {
 	}
 
 	public void salvarCarrinho(){
-		pedidoRepositorio.salvarPedido(carrinho);
+		pedidoRepositorio.salvarPedido(carrinho, donoCarrinho);
 	}
 	
 	public void inserirProduto(Produto produto) {
@@ -38,6 +40,14 @@ public class CarrinhoService {
 
 	public void removerProduto(Produto produtoARemover) {
 		carrinho.removerProduto(produtoARemover);
+	}
+
+	public Usuario getDonoCarrinho() {
+		return donoCarrinho;
+	}
+
+	public void setDonoCarrinho(Usuario donoCarrinho) {
+		this.donoCarrinho = donoCarrinho;
 	}
 	
 }

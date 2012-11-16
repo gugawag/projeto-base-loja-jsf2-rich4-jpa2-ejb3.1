@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="templateUsuario.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -12,14 +12,10 @@
 			<p:column headerText="Descricao">
 				<h:outputText value="#{produto.descricao}"/>
 			</p:column>
-
 			<p:column headerText="Valor">
 				<h:outputText value="#{produto.valor}"/>
 			</p:column>
-			
-			<p:column headerText="excluir">
-				<h:commandLink value="x" action = "#{produtoBean.remover(produto) }" /> 
-			</p:column>
+			<p:column><p:commandLink action="#{carrinhoBean.comprar(produto)}">Comprar</p:commandLink></p:column>
 		</p:dataTable>
 	</h:form>
 		<p:messages autoUpdate="true"/>

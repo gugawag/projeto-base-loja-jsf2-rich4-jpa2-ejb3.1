@@ -7,8 +7,9 @@
       
     <h:form>
     <p:menubar>  
-         <p:menuitem value="Listar" url="listagemProdutos.jsf" />    
-         <p:menuitem value="Carrinho" url="carrinho.jsf" />  
+         <p:menuitem value="Listar Produtos" url="listagemProdutosParaUsuarios.jsf" />    
+         <p:menuitem value="Carrinho" url="carrinho.jsf" />
+         <p:menuitem value="#{usuarioBean.usuarioLogado.login}" url="editarUsuario.jsf" />
     </p:menubar> 
     </h:form>
 </ui:composition>

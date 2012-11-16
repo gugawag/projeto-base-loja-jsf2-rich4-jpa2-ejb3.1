@@ -24,14 +24,12 @@ public class Usuario implements Serializable {
 	private String email;
 	private String senha;
 	
-
-	//A FAZER - Alterar cadastro de usuário para ter o endereço e a data de nascimento
 	@Transient
 	private Endereco endereco;
 	private Date dataNascimento;
 	
 	@Transient
-	private List<Carrinho> carrinhos;
+	private List<Pedido> pedidos;
 	
 	public Usuario(){
 		this(null, null, null);
@@ -106,12 +104,12 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public List<Carrinho> getCarrinhos() {
-		return carrinhos;
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-	public void setCarrinhos(List<Carrinho> carrinhos) {
-		this.carrinhos = carrinhos;
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 	
 }

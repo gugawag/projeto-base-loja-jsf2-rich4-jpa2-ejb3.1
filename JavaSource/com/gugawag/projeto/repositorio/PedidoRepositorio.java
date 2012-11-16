@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import com.gugawag.projeto.modelo.Carrinho;
 import com.gugawag.projeto.modelo.Pedido;
+import com.gugawag.projeto.modelo.Usuario;
 
 @Stateless
 public class PedidoRepositorio implements Serializable{
@@ -18,8 +19,9 @@ public class PedidoRepositorio implements Serializable{
 	@PersistenceContext(unitName="projeto-PU")
 	private EntityManager em;
 	
-	public void salvarPedido(Carrinho carrinho){
+	public void salvarPedido(Carrinho carrinho, Usuario donoCarrinho){
 		Pedido pedido = new Pedido();
+		pedido.setCliente(donoCarrinho);
 		pedido.setItens(carrinho.getItens());
 		em.persist(pedido);
 	}

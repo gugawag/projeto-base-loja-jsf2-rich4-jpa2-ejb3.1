@@ -19,7 +19,7 @@ public class UsuarioService {
 		if (usuarioPesquisado != null){
 			throw new UsuarioJahCadatradoException("Usu‡ário " + usuario + " j‡á cadastrado!");
 		}
-		usuarioRepositorio.cadastrarUsuario(new Usuario(usuario.getLogin(), usuario.getCpf(), usuario.getEmail()));
+		usuarioRepositorio.cadastrarUsuario(usuario);
 	}
 
 	public List<Usuario> getUsuarios() {
