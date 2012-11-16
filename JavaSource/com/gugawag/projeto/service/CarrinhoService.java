@@ -22,7 +22,10 @@ public class CarrinhoService {
 		carrinho = new Carrinho();
 	}
 
-	public void salvarCarrinho(){
+	public void salvarCarrinho() throws CarrinhoVazioException{
+		if (carrinho.getItens().size() == 0){
+			throw new CarrinhoVazioException();
+		}
 		pedidoRepositorio.salvarPedido(carrinho, donoCarrinho);
 	}
 	

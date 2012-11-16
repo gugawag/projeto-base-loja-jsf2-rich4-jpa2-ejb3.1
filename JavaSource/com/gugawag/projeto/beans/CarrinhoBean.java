@@ -11,6 +11,7 @@ import com.gugawag.projeto.modelo.Carrinho;
 import com.gugawag.projeto.modelo.Item;
 import com.gugawag.projeto.modelo.Produto;
 import com.gugawag.projeto.service.CarrinhoService;
+import com.gugawag.projeto.service.CarrinhoVazioException;
 
 @ManagedBean
 @SessionScoped
@@ -43,7 +44,14 @@ public class CarrinhoBean {
 	}
 	
 	public String fecharCompra(){
-		carrinhoService.salvarCarrinho();
+		try {
+			carrinhoService.salvarCarrinho();
+		} catch (CarrinhoVazioException e) {
+			FacesMessage message = new FacesMessage("Carrinho Vazio!");
+			message.setSeverity(FacesMessage.SEVERITY_WARN);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return null;
+		}
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "compraFinalizada";
 	}
